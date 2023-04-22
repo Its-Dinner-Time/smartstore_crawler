@@ -61,7 +61,9 @@ def crawler(shop: str, product_no: str):
 
   # 리뷰 탭을 찾을 때까지 대기
   wait = WebDriverWait(driver, 10)
-  review_tabs = wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, '_1ykMw2f75V')))
+  wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, '_1ykMw2f75V')))
+
+  review_tabs = driver.find_elements(By.CLASS_NAME, '_1ykMw2f75V')
   review_tabs[2].click()
 
   # 스토어 픽 리뷰 HTML을 추출
